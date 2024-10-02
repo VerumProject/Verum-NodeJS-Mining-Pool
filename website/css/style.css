@@ -1,0 +1,79 @@
+.navbar {
+  background-color:#34304D;
+}
+
+.btn-theme {
+  background-color:#B1253E;
+  color:#fff;
+}
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-outline-theme:hover,
+.btn-outline-theme:focus {
+  background-color:#972036;
+  color:#fff;
+  box-shadow:none;
+  box-shadow: 0 0 0 0.2rem rgba(47, 44, 69, 0.25);
+}
+
+code {
+  color:#948eb8!important;
+}
+
+.btn-outline-theme {
+  border-color:#B1253E;
+  color:#B1253E;
+}
+
+
+
+.custom-switch2 {
+  margin-top: 12px;
+}
+
+.custom-control-input2 {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-control-label2 {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  background-color: #ccc;
+  border-radius: 24px;
+  transition: background-color 0.3s ease;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.custom-control-label2::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.custom-control-input2:checked + .custom-control-label2 {
+  background-color: #9169b5;
+  border-color: #9169b5;
+}
+
+.custom-control-input2:checked + .custom-control-label2::after {
+  transform: translateX(26px);
+}
+
+.custom-control-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+}

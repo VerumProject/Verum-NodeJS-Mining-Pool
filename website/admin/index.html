@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Verum - Mining Pool | Admin</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Empowering Connections and Well-Being">
+    <meta name="author" content="The Verum Team">
+    <meta name="keywords" content="verum, vynity, cryptocurrency, mental, health, crypto, connections">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top justify-content-between py-3 mb-3">
+            <div class="container">
+                <a class="navbar-brand  translatable" href="/">
+                    <img src="https://verumcoin.nl/img/verum_logo_color.png" alt="Verum" style="position:relative; top:-2px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link translatable active" href="index.html">Statistics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link translatable" href="monitor.html">Monitoring</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link translatable" href="users.html">Users List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link translatable" href="/">Return to Pool</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="statistics" class="statistics">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-light border-success">
+                            <div class="card-header font-weight-bold text-muted">
+                                <h6 class="m-0">Pool Statistics</h6>
+                            </div>
+                            <div class="card-group card-border" id="poolStats">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="list-group list-group-flush">
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="mr-auto">
+                                                    <h5 class="font-weight-bold mb-1" id="totalMined">N/A</h5>
+                                                    <p class="font-size-sm text-muted mb-0">Total Mined</p>
+                                                </div>
+                                            </div>
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="mr-auto">
+                                                    <h5 class="font-weight-bold mb-1" id="registeredAddresses">N/A</h5>
+                                                    <p class="font-size-sm text-muted mb-0">Registered Addresses</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card border-left-md">
+                                    <div class="card-body">
+                                        <div class="list-group list-group-flush">
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="mr-auto">
+                                                    <h5 class="font-weight-bold mb-1" id="totalPaid">N/A</h5>
+                                                    <p class="font-size-sm text-muted mb-0">Total Paid</p>
+                                                </div>
+                                            </div>
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="mr-auto">
+                                                    <h5 class="font-weight-bold mb-1" id="blocksUnlocked">N/A</h5>
+                                                    <p class="font-size-sm text-muted mb-0">Blocks Unlocked</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card border-left-md">
+                                    <div class="card-body">
+                                        <div class="list-group list-group-flush">
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="mr-auto">
+                                                    <h5 class="font-weight-bold mb-1" id="totalOwed">N/A</h5>
+                                                    <p class="font-size-sm text-muted mb-0">Total Owed</p>
+                                                </div>
+                                            </div>
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="mr-auto">
+                                                    <h5 class="font-weight-bold mb-1">
+                                                        <span id="blocksOrphaned">N/A</span> <span class="text-danger">(<em id="orphanPercent">0%</em>)</span>
+                                                    </h5>
+                                                    <p class="font-size-sm text-muted mb-0">Blocks Orphaned</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card border-left-md">
+                                    <div class="card-body">
+                                        <div class="list-group list-group-flush">
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="mr-auto">
+                                                    <h5 class="font-weight-bold mb-1" id="profit">N/A</h5>
+                                                    <p class="font-size-sm text-muted mb-0">Profit (before tx fees)</p>
+                                                </div>
+                                            </div>
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="mr-auto">
+                                                    <h5 class="font-weight-bold mb-1" id="averageLuck">N/A</h5>
+                                                    <p class="font-size-sm text-muted mb-0">Average Luck (shares / diff)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ports" class="ports bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card shadow-light overflow-hidden">
+                            <div class="card-header font-weight-bold text-muted">
+                                <h6 class="m-0">Current Ports Usage (<span id="totalUsers">0</span> users)</h6>
+                            </div>
+                            <div class="table-responsive" id="portsUsage">
+                                <table class="table mb-0" id="logTable">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Port</th>
+                                        <th scope="col">Connected Users</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="template"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card shadow-light overflow-hidden">
+                            <div class="card-header font-weight-bold text-muted">
+                                <h6 class="m-0">Tools</h6>
+                            </div>
+                            <div class="card-body py-3">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="w-100">
+                                            <label for="emailAddress">Test E-mail notifications</label>
+                                            <div class="input-group w-100">
+                                                <input type="text" class="form-control" id="emailAddress" placeholder="E-Mail Address">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-secondary" type="button" id="testEmailButton">Send test</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="w-100">
+                                            <label class="mb-2 mt-2">Test Telegram Channel notifications</label>
+                                            <h5 class="font-weight-bold mb-0" id="blocks-found-every">
+                                                <button type="button" class="btn btn-secondary btn-block" id="testTelegramButton">Send Telegram test</button>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div id="test_email_message" role="alert"></div>
+                        <div id="test_telegram_message" role="alert"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script id="portsListTable" type="text/x-handlebars-template">
+            {{#each ports}}
+            <tr>
+                <td data-sort="{{this.port.port}}">{{this.port}}</td>
+                <td data-sort="{{this.port.users}}">{{this.users}}</td>
+            </tr>
+            {{/each}}
+        </script>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-details row">
+                <div class="col-md-6 col-lg-3 footer-widget">
+                    <a href="https://verumcoin.nl"><img src="https://verumcoin.nl/img/verum_logo_color.png" class="logo mb-2" alt="Verum"></a>
+                    <p class="sub-heading">Empowering Connections and Well-Being</p>
+                </div>
+                <div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
+                </div>
+                <div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
+                    <h5 class="widget-title text-uppercase">Quick Links</h5>
+                    <ul class="text-muted">
+                        <li><a href="https://verumcoin.nl" class="text-reset">Website</a></li>
+                        <li><a href="https://explorer.verumcoin.nl" class="text-reset">Block Explorer</a></li>
+                        <li><a href="https://pool.verumcoin.nl" class="text-reset">Main Pool</a></li>
+                        <li><a href="javascript:void(0)" class="text-reset disabled d-none" title="Coming soon">Exchange Markets</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3 footer-widget pl-lg-5 pl-3">
+                    <h6 class="widget-title text-uppercase">Get in touch</h6>
+                    <div class="social text-muted">
+                        <a href="https://github.com/VerumProject" class="github text-reset" target="_blank"><i class="fab fa-github-alt"></i></a>
+                        <a href="https://discord.gg/WvV5k4hMny" class="discord text-reset" target="_blank"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-lg-4 store-links text-center text-lg-left pb-3 pb-lg-0">
+                        <p class="text-muted">&copy; 2024 Verum</p>
+                    </div>
+                    <div class="col-lg-8 text-center text-lg-right">
+                        <p class="text-muted">
+                            <span>Powered by <a target="_blank" href="https://github.com/VerumProject/Verum-NodeJS-Mining-Pool">Verum-NodeJS-Mining-Pool</a>
+                            <span id="poolVersion"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--====== Javascript & Jquery ======-->
+    <script src="/config.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/bootstrap.bundle.js"></script>
+    <script src="/vendor/mustache/mustache.min.js"></script>
+    <script src="/vendor/timeago/jquery.timeago.js"></script>
+    <script src="/vendor/handlebars/handlebars.min.js"></script>
+    <script src="/js/translate.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    <script src="/js/admin/index.min.js"></script>
+</body>
+</html>

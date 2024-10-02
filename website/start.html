@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Verum - Mining Pool</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Empowering Connections and Well-Being">
+    <meta name="author" content="The Verum Team">
+    <meta name="keywords" content="verum, vynity, cryptocurrency, mental, health, crypto, connections">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top justify-content-between py-3 mb-3">
+            <div class="container">
+                <a class="navbar-brand  translatable" href="/">
+                    <img src="https://verumcoin.nl/img/verum_logo_color.png" alt="Verum" style="position:relative; top:-2px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link translatable" href="index.html" data-translate-key="dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link translatable active" href="start.html" data-translate-key="gettingStarted">Getting Started</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link translatable" href="statistics.html" data-translate-key="yourStats">Worker statistics</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDetails" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-translate-key="details">Details</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownDetails" id="detailsMenu">
+                                <a class="dropdown-item translatable" href="blocks.html" data-translate-key="poolBlocks">Pool Blocks</a>
+                                <a class="dropdown-item translatable" href="payments.html" data-translate-key="payments">Payments</a>
+                                <a class="dropdown-item translatable" href="top.html" data-translate-key="top10miners">Top 10 Miners</a>
+                                <a class="dropdown-item translatable" href="market.html" data-translate-key="market">Market / Calculator</a>
+                                <a class="dropdown-item translatable" href="settings.html" data-translate-key="settings">Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item translatable" href="faq.html" data-translate-key="faq">FAQ</a>
+                            </div>
+                        </li>
+                        <li class="nav-item ml-md-4" id="langSelector"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <section id="statistics" class="statistics">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="card shadow-light mb-4">
+                            <div class="card-header font-weight-bold text-muted">
+                                <h6 class="m-0" data-translate-key="connectionDetails">Connection Details</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="mr-auto">
+                                            <h5 class="font-weight-bold mb-1" id="miningPoolHost"></h5>
+                                            <p class="font-size-sm text-muted mb-0" data-translate-key="miningPoolHost">Mining Pool Address</p>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="mr-auto">
+                                            <h5 class="font-weight-bold mb-1" id="cnAlgorithm"></h5>
+                                            <p class="font-size-sm text-muted mb-0" data-translate-key="cnAlgorithm">Algorithm</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow-light mb-4">
+                            <div class="card-header font-weight-bold text-muted">
+                                <h6 class="m-0" data-translate-key="miningPorts">Mining Ports</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="col1"><span data-translate-key="port">Port</span></th>
+                                            <th scope="col" class="col2"><span data-translate-key="portDiff">Starting Difficulty</span></th>
+                                            <th scope="col" class="col3"><span data-translate-key="description">Description</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mining-ports-rows">
+                                        <tr>
+                                            <th scope="col" class="col1"><span class="miningPort"></span></th>
+                                            <td class="col2"><span class="miningPortDiff"></span></td>
+                                            <td class="col3"><span class="miningPortDesc"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="card shadow-light mb-4">
+                            <div class="card-header font-weight-bold text-muted">
+                                <h6 class="m-0" data-translate-key="username">Username</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="mr-auto">
+                                            <h5 class="font-weight-bold mb-1">
+                                                <span><em data-translate-key="parentAddress">WalletAddress</em><span class="paymentIdSeparator">.</span><em data-translate-key="addrPaymentId">PaymentID</em></span>
+                                            </h5>
+                                            <p class="font-size-sm text-muted mb-0" data-translate-key="paymentId">Exchange Payment ID</p>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="mr-auto">
+                                            <h5 class="font-weight-bold mb-1">
+                                                <span><em data-translate-key="parentAddress">WalletAddress</em><span id="fixedDiffSeparator">+</span><em data-translate-key="addrDiff">Diff</em></span>
+                                            </h5>
+                                            <p class="font-size-sm text-muted mb-0" data-translate-key="fixedDiff">Difficulty locking</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow-light mb-4">
+                            <div class="card-header font-weight-bold text-muted">
+                                <h6 class="m-0" data-translate-key="password">Password</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex align-items-center d-none">
+                                        <div class="mr-auto">
+                                            <p class="font-size-sm text-muted mb-0">
+                                                <span data-translate-key="usernameDesc2">Use your <strong id="paymentChildCoins">wallet address</strong> in the password field for merged mining.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="mr-auto">
+                                            <h5 class="font-weight-bold mb-1">
+                                                <span><em data-translate-key="addrPaymentId">PaymentID</em></span>
+                                            </h5>
+                                            <p class="font-size-sm text-muted mb-0" data-translate-key="paymentId">Exchange Payment ID</p>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="mr-auto">
+                                            <h5 class="font-weight-bold mb-1">
+                                                <span><em data-translate-key="addrDiff2">WorkerName</em></span>
+                                            </h5>
+                                            <p class="font-size-sm text-muted mb-0" data-translate-key="workerName">Worker Name</p>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <div class="mr-auto">
+                                            <h5 class="font-weight-bold mb-1">
+                                                <span><em data-translate-key="addrPaymentId">PaymentID</em><span class="fixedDiffSeparator2">@</span><em data-translate-key="addrDiff2">WorkerName</em></span>
+                                            </h5>
+                                            <p class="font-size-sm text-muted mb-0" data-translate-key="fixedDiff2PaymentId">Payment ID and Worker Name</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="config" class="config bg-light">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="card shadow-light">
+                            <div class="card-header font-weight-bold text-muted">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="m-0" data-translate-key="miningApps">Mining Applications</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="gMiningPort" aria-label="Mining Port"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-check form-check-inline mt-2">
+                                                    <input class="form-check-input" type="checkbox" name="solo" id="gSolo" value="1">
+                                                    <label class="form-check-label" for="gSolo" data-translate-key="soloMining">Solo Mining</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="gAddress" placeholder="Wallet Address" data-translate-placeholder="addressField" aria-label="Wallet Address" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="gDifficulty" placeholder="Fixed difficulty (optional)" data-translate-placeholder="fixedDiffField" aria-label="Child Address">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="gWorkerName" placeholder="Worker Name" data-translate-placeholder="workerNameField" aria-label="Worker Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="gPaymentID" placeholder="Parent Payment ID for exchanges (optional)" data-translate-placeholder="paymentIdField" aria-label="Parent Payment ID for exchanges">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted no-border text-center">
+                                <a class="btn btn-theme" id="generateConf" data-translate-key="generateConfig" data-toggle="collapse" href="#srbminer">Generate configuration</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-border border-success shadow-lg overflow-hidden">
+                            <div id="miningApps" class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><span data-translate-key="appName">App Name</span></th>
+                                            <th scope="col"><span data-translate-key="appArch">Architecture</span></th>
+                                            <th scope="col"><span data-translate-key="appDesc">Features</span></th>
+                                            <th scope="col"><span data-translate-key="download">Download</span></th>
+                                            <th scope="col"><span data-translate-key="configuration">Configuration</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mining-apps-rows">
+                                        <tr class="appInfo align-items-center">
+                                            <th class="align-middle miningAppTitle" scope="col">SRBMiner-Multi</th>
+                                            <td class="align-middle">CPU & GPU (AMD)</td>
+                                            <td class="align-middle">CPU and AMD miner</td>
+                                            <td class="align-middle"><a class="btn btn-outline-theme btn-sm" target="_blank" href="https://github.com/doktor83/SRBMiner-Multi/releases/latest"><span data-translate-key="download">Download</span></a></td>
+                                            <td class="align-middle"><a class="btn btn-outline-success btn-sm" role="button" data-toggle="collapse" href="#srbminer" aria-expanded="true" aria-controls="collapse-srbminer"><span data-translate-key="showConfig">See more</span></a></td>
+                                        </tr>
+                                        <tr class="appConfig bg-light collapse" id="srbminer">
+                                            <td colspan="5">
+                                                <pre class="mb-0"><code>Terminal GPU:
+SRBMiner-MULTI --algorithm <span class="xmrstakAlgo"></span> --disable-cpu --pool stratum+tcp://<span class="exampleHost">POOL_HOST</span>:<span class="examplePort">PORT</span> --wallet <span class="exampleLogin">YOUR_WALLET_ADDRESS</span> --password <span class="examplePassword">YOUR_WORKER_NAME</span>
+
+Terminal CPU:
+SRBMiner-MULTI --algorithm <span class="xmrstakAlgo"></span> --disable-gpu --cpu-threads 4 --pool stratum+tcp://<span class="exampleHost">POOL_HOST</span>:<span class="examplePort">PORT</span> --wallet <span class="exampleLogin">YOUR_WALLET_ADDRESS</span> --password <span class="examplePassword">YOUR_WORKER_NAME</span>
+
+*Change '--cpu-threads' from 4 to the amount of threads you want to use</code></pre>
+                                            </td>
+                                        </tr>
+                                        <tr class="appInfo">
+                                            <th class="miningAppTitle" scope="col">XMRig</th>
+                                            <td>CPU & GPU (NVIDIA/AMD)</td>
+                                            <td>XMRIG multi miner</td>
+                                            <td><a class="btn btn-outline-theme btn-sm" target="_blank" href="https://github.com/xmrig/xmrig/releases/latest"><span data-translate-key="download">Download</span></a></td>
+                                            <td><a class="btn btn-outline-success btn-sm" role="button" data-toggle="collapse" href="#xmrig" aria-expanded="true" aria-controls="collapse-xmrig"><span data-translate-key="showConfig">See more</span></a></td>
+                                        </tr>
+                                        <tr class="appConfig bg-light collapse" id="xmrig">
+                                            <td colspan="5">
+							                    <pre class="mb-0"><code>Terminal:
+xmrig --algo cn-pico --url stratum+tcp://pool.verumcoin.nl:3333 --user VRM1dqWaXJt7kBGgWYpHuEjVgFec6brvJjMep8LzJSh3JWr2QSzFgx937YAUPc8VcsdAjd44waFWGVrQ8md4JfuU7AAhE8w9gG --pass xmrig
+
+* Add '--cuda' when mining with NVIDIA
+* Add '--opencl' when mining with AMD
+* Add '--no-cpu' to disable CPU mining
+* Add '--threads 4' and replace 4 with your amount of threads you want to use
+
+
+"pools": [
+    {
+        "algo": "<span class="xmrigAlgo"></span>",
+        "url": "stratum+tcp://<span class="exampleHost">POOL_HOST</span>:<span class="examplePort">PORT</span>",
+        "user": "<span class="exampleLogin">YOUR_WALLET_ADDRESS</span>",
+        "pass": "<span class="examplePassword">YOUR_PASSWORD@YOUR_WORKER_NAME</span>",
+        "keepalive": true,
+        "nicehash": false,
+    }
+],</code></pre>
+                                            </td>
+                                        </tr>
+                                        <tr class="appInfo">
+                                            <th class="miningAppTitle" scope="col">CryptoDredge</th>
+                                            <td>CUDA (NVIDIA)</td>
+                                            <td>NVIDIA Miner</td>
+                                            <td><a class="btn btn-outline-theme btn-sm" target="_blank" href="https://github.com/CryptoDredge/miner/releases/latest"><span data-translate-key="download">Download</span></a></td>
+                                            <td><a class="btn btn-outline-success btn-sm" role="button" data-toggle="collapse" href="#cryptodredge" aria-expanded="true" aria-controls="collapse-cryptodredge"><span data-translate-key="showConfig">See more</span></a></td>
+                                        </tr>
+                                        <tr class="appConfig bg-light collapse" id="cryptodredge">
+                                            <td colspan="5">
+							                    <pre class="mb-0"><code>Terminal:
+CryptoDredge --algo <span class="cryptodredgeAlgo"></span> --url stratum+tcp://<span class="exampleHost">POOL_HOST</span>:<span class="examplePort">PORT</span> --user <span class="exampleLogin">YOUR_WALLET_ADDRESS</span> --pass <span class="examplePassword">WORKER_NAME</span>
+
+config.json file:
+{
+    "algo": "<span class="cryptodredgeAlgo"></span>",
+    "url": "stratum+tcp://<span class="exampleHost">POOL_HOST</span>:<span class="examplePort">PORT</span>",
+    "user": "<span class="exampleLogin">YOUR_WALLET_ADDRESS</span>",
+    "pass": "<span class="examplePassword">WORKER_NAME</span>",
+    "worker": "<span class="examplePassword">WORKER_NAME</span>"
+}</code></pre>
+                                            </td>
+                                        </tr>
+                                        <tr class="appInfo">
+                                            <th class="miningAppTitle" scope="col">TeamRedMiner</th>
+                                            <td>OpenCL (AMD)</td>
+                                            <td>AMD only miner</td>
+                                            <td><a class="btn btn-outline-theme btn-sm" target="_blank" href="https://github.com/todxx/teamredminer/releases/latest"><span data-translate-key="download">Download</span></a></td>
+                                            <td><a class="btn btn-outline-success btn-sm" role="button" data-toggle="collapse" href="#teamredminer" aria-expanded="true" aria-controls="collapseExample"><span data-translate-key="showConfig">See more</span></a></td>
+                                        </tr>
+                                        <tr class="appConfig bg-light collapse" id="teamredminer">
+                                            <td colspan="5">
+							                    <pre class="mb-0"><code>Terminal:
+teamredminer --algo=<span class="teamredminerAlgo"></span> --url=stratum+tcp://<span class="exampleHost">POOL_HOST</span>:<span class="examplePort">PORT</span> --user=<span class="exampleLogin">YOUR_WALLET_ADDRESS</span> --pass=<span class="examplePassword">WORKER_NAME</span>
+
+*If you get 'WARNING - gpu monitor failed to initialize (-8)' error, please add '--no_gpu_monitor' at the end of the command</code></pre>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-details row">
+                <div class="col-md-6 col-lg-3 footer-widget">
+                    <a href="https://verumcoin.nl"><img src="https://verumcoin.nl/img/verum_logo_color.png" class="logo mb-2" alt="Verum"></a>
+                    <p class="sub-heading">Empowering Connections and Well-Being</p>
+                </div>
+                <div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
+                </div>
+                <div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
+                    <h5 class="widget-title text-uppercase">Quick Links</h5>
+                    <ul class="text-muted">
+                        <li><a href="https://verumcoin.nl" class="text-reset">Website</a></li>
+                        <li><a href="https://explorer.verumcoin.nl" class="text-reset">Block Explorer</a></li>
+                        <li><a href="https://pool.verumcoin.nl" class="text-reset">Main Pool</a></li>
+                        <li><a href="javascript:void(0)" class="text-reset disabled d-none" title="Coming soon">Exchange Markets</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3 footer-widget pl-lg-5 pl-3">
+                    <h6 class="widget-title text-uppercase">Get in touch</h6>
+                    <div class="social text-muted">
+                        <a href="https://github.com/VerumProject" class="github text-reset" target="_blank"><i class="fab fa-github-alt"></i></a>
+                        <a href="https://discord.gg/WvV5k4hMny" class="discord text-reset" target="_blank"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-lg-4 store-links text-center text-lg-left pb-3 pb-lg-0">
+                        <p class="text-muted">&copy; 2024 Verum</p>
+                    </div>
+                    <div class="col-lg-8 text-center text-lg-right">
+                        <p class="text-muted">
+                            <span>Powered by <a target="_blank" href="https://github.com/VerumProject/Verum-NodeJS-Mining-Pool">Verum-NodeJS-Mining-Pool</a>
+                            <span id="poolVersion"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--====== Javascript & Jquery ======-->
+    <script src="/config.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/bootstrap.bundle.js"></script>
+    <script src="/vendor/mustache/mustache.min.js"></script>
+    <script src="/vendor/timeago/jquery.timeago.js"></script>
+    <script src="/js/translate.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    <script src="/js/start.min.js"></script>
+</body>
+</html>
