@@ -37,31 +37,31 @@
 		"sslKey": "<SSL_KEY>",
 		"sslCA": "<SSL_CA>",
 		"ports": [
-			{
-				"port": 3333,
-				"difficulty": 60000,
-				"desc": "Low end"
-			},
-			{
-				"port": 5555,
-				"difficulty": 450000,
-				"desc": "Mid range"
-			},
-			{
-				"port": 7777,
-				"difficulty": 1500000,
-				"desc": "High end"
-			},
-			{
-				"port": 9999,
-				"difficulty": 4500000,
-				"desc": "Super high end"
-			}
-		],
+                        {
+                                "port": 3333,
+                                "difficulty": 60000,
+                                "desc": "[2 KH/s] Low end"
+                        },
+                        {
+                                "port": 5555,
+                                "difficulty": 450000,
+                                "desc": "[15 KH/s] Mid range"
+                        },
+                        {
+                                "port": 7777,
+                                "difficulty": 1500000,
+                                "desc": "[50 KH/s] High end"
+                        },
+                        {
+                                "port": 9999,
+                                "difficulty": 4500000,
+                                "desc": "[150 KH/s] Super high end"
+                        }
+                ],
 		"varDiff": {
-			"minDiff": 5000,
-			"maxDiff": 100000000,
-			"targetTime": 30,
+			"minDiff": 100,
+			"maxDiff": 500000,
+			"targetTime": 10,
 			"retargetTime": 30,
 			"variancePercent": 30,
 			"maxJump": 100
